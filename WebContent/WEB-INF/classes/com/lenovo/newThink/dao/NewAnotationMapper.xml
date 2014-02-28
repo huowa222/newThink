@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lenovo.newThink.dao.NewAnotationMapper">
+
+	<resultMap id="new_anotationResultMap" type="newAnotationVo" >
+		<id property="id" column="id" />
+		<result property="content" />
+		<result property="newIdeaid" />
+	</resultMap>
+
+	<insert id="insertNewAnotation" parameterType="newAnotationVo">
+		INSERT INTO new_anotation
+		(content,newIdeaid)
+		VALUES
+		( #{content,jdbcType=VARCHAR},#{newIdeaid,jdbcType=NUMERIC} )
+  	</insert>
+  	
+	<update id="modifyNewAnotation" parameterType="newAnotationVo">
+		update new_anotation set 
+		content=#{content,jdbcType=VARCHAR},
+		newIdeaid=#{newIdeaid,jdbcType=NUMERIC} where id = #{id}	
+	</update>
+	
+	<select id="getNewAnotation" parameterType="long"  resultMap="new_anotationResultMap">
+		SELECT * FROM new_anotation WHERE id = #{id}
+	</select>
+	
+	<select id="getNewAnotationList" resultMap="new_anotationResultMap">
+		SELECT * FROM new_anotation
+	</select>
+	
+	<select id="getNewAnotationById" parameterType="long"  resultMap="new_anotationResultMap">
+		SELECT * FROM new_anotation WHERE newIdeaid = #{id}
+	</select>
+	
+	<select id="deleteNewAnotation" parameterType="long">
+		delete FROM new_anotation WHERE id = #{id}
+	</select>
+</mapper>

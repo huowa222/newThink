@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lenovo.newThink.dao.UserCommentMapper">
+
+	<resultMap id="userCommentResultMap" type="UserCommentVo" >
+		<id property="id" column="id" />
+		<result property="userid" />
+		<result property="newThinkId" />
+		<result property="content" />
+	</resultMap>
+
+	<insert id="insertUserComment" parameterType="UserCommentVo">
+		INSERT INTO user_comment
+		(userid,newThinkId,content)
+		VALUES
+		( #{userid,jdbcType=NUMERIC},#{newThinkId,jdbcType=NUMERIC},#{content,jdbcType=VARCHAR} )
+  	</insert>
+  	
+  	<insert id="deleteUserComment" parameterType="long">
+		delete from user_comment where id = #{id}
+  	</insert>
+  	
+	<update id="updateUserComment" parameterType="UserCommentVo">
+		update user_comment set 
+		newThinkId=#{newThinkId,jdbcType=NUMERIC} where id = #{id}	
+	</update>
+	
+	<select id="getUserCommentByThinkId" parameterType="long"  resultMap="userCommentResultMap">
+		SELECT * FROM user_comment WHERE newThinkId = #{newThinkId}
+	</select>
+	
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lenovo.newThink.dao.UserInfoMapper">
+
+	<resultMap id="userInfoResultMap" type="UserInfoVo" >
+		<id property="id" column="id" />
+		<result property="userid" />
+		<result property="password" />
+	</resultMap>
+
+	<insert id="insertUserInfo" parameterType="UserInfoVo">
+		INSERT INTO user_info
+		(userid,password)
+		VALUES
+		( #{userid,jdbcType=NUMERIC},#{password,jdbcType=VARCHAR} )
+  	</insert>
+  	
+	<update id="updateUserInfo" parameterType="UserInfoVo">
+		update user_info set 
+		password=#{password,jdbcType=VARCHAR},
+		userid=#{userid,jdbcType=NUMERIC} where userid = #{userid}	
+	</update>
+	
+	<select id="getUserInfo" parameterType="long"  resultMap="userInfoResultMap">
+		SELECT * FROM user_info WHERE userid = #{userid}
+	</select>
+	
+</mapper>

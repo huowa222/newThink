@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lenovo.newThink.dao.UserFriendMapper">
+
+	<resultMap id="userFriendResultMap" type="UserFriendVo" >
+		<id property="id" column="id" />
+		<result property="userid" />
+		<result property="FriendId" />
+	</resultMap>
+
+	<insert id="insertUserFriend" parameterType="UserFriendVo">
+		INSERT INTO user_friendship
+		(userid,friendId)
+		VALUES
+		( #{userid,jdbcType=NUMERIC},#{friendId,jdbcType=NUMERIC} )
+  	</insert>
+  	
+  	<insert id="deleteUserFriend" parameterType="long">
+		delete from user_friendship where id = #{id}
+  	</insert>
+  	
+	<update id="updateUserFriend" parameterType="UserFriendVo">
+		update user_friendship set 
+		friendId=#{friendId,jdbcType=NUMERIC} where id = #{id}	
+	</update>
+	
+	<select id="getUserFriendByUserId" parameterType="long"  resultMap="userFriendResultMap">
+		SELECT * FROM user_friendship WHERE userid = #{userid}
+	</select>
+	
+</mapper>

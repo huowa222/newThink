@@ -1,0 +1,97 @@
+#objectiveList {
+	position: absolute;
+	left: 50px;
+	width: 500px;
+	height: 90%;
+	border: solid 1px;
+}
+
+#inspirationList {
+	position: absolute;
+	right: 50px;
+	width: 500px;
+	height: 60%;
+	border: solid 1px;
+}
+
+#anotation {
+	position: absolute;
+	right: 50px;
+	bottom: 0px;
+	width: 500px;
+	height: 20%;
+	border: solid 1px;
+}
+
+#friendList {
+	position: absolute;
+	left: 20px;
+	top: 0px;
+	width: 200px;
+	height: 100%;
+	border: solid 1px;
+}
+
+#friendThink {
+	position: absolute;
+	right: 20px;
+	top: 0px;
+	width: 500px;
+	height: 100%;
+	border: solid 1px;
+}
+
+.table-list {
+	margin: 0px;
+	padding: 0px;
+	outline: 0px;
+	border: 1px currentColor;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: #fafafa;
+}
+
+th {
+	margin: 0px;
+	padding: 0px;
+	outline: 0px;
+	border: 0px currentColor;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+td {
+	margin: 0px;
+	padding: 0px;
+	outline: 0px;
+	border: 0px currentColor;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+tr {
+	margin: 5px;
+	padding: 5px;
+	outline: 0px;
+	border: 1px currentColor;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+ul {
+	list-style: none;
+	magin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+li {
+	list-style: none;
+	magin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+.content {
+	
+}

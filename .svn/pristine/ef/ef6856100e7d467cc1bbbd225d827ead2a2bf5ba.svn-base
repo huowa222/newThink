@@ -1,0 +1,64 @@
+CREATE TABLE `user_newidea` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL DEFAULT '0',
+  `content` varchar(255) DEFAULT NULL,
+  `picUrl` varchar(255) DEFAULT NULL,
+  `isPost` int(11) NOT NULL DEFAULT '0',
+  `position_x` int(11) NOT NULL DEFAULT '100',
+  `position_y` int(11) NOT NULL DEFAULT '100',
+  `color` varchar(20) NOT NULL DEFAULT 'lightblue',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `user_info` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `userid` (`userid`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `user_friendship` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NOT NULL DEFAULT '0',
+  `friendId` int(11) DEFAULT '0',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `user_comment` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NOT NULL DEFAULT '0',
+  `newThinkId` int(11) NOT NULL DEFAULT '0',
+  `content` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `new_objective` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) DEFAULT NULL,
+  `newIdeaid` int(11) NOT NULL DEFAULT '0',
+  `preObjId` int(11) NOT NULL DEFAULT '0',
+  `status` varchar(20) NOT NULL DEFAULT 'false',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `new_inspiration` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) DEFAULT NULL,
+  `newIdeaid` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `new_anotation` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) DEFAULT NULL,
+  `newIdeaid` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+

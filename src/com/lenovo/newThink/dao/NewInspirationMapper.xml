@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lenovo.newThink.dao.NewInspirationMapper">
+
+	<resultMap id="new_inspirationResultMap" type="newInspirationVo" >
+		<id property="id" column="id" />
+		<result property="content" />
+		<result property="newIdeaid" />
+	</resultMap>
+
+	<insert id="insertNewInspiration" parameterType="newInspirationVo">
+		INSERT INTO new_inspiration
+		(content,newIdeaid)
+		VALUES
+		( #{content,jdbcType=VARCHAR},#{newIdeaid,jdbcType=NUMERIC} )
+  	</insert>
+  	
+	<update id="modifyNewInspiration" parameterType="newInspirationVo">
+		update new_inspiration set 
+		content=#{content,jdbcType=VARCHAR},
+		newIdeaid=#{newIdeaid,jdbcType=NUMERIC} where id = #{id}	
+	</update>
+	
+	<select id="getNewInspiration" parameterType="long"  resultMap="new_inspirationResultMap">
+		SELECT * FROM new_inspiration WHERE id = #{id}
+	</select>
+	
+	<select id="getNewInspirationList" resultMap="new_inspirationResultMap">
+		SELECT * FROM new_inspiration 
+	</select>
+	
+	<select id="getNewInspirationById" parameterType="long"  resultMap="new_inspirationResultMap">
+		SELECT * FROM new_inspiration WHERE newIdeaid = #{id}
+	</select>
+	
+	<select id="deleteNewInspiration" parameterType="long">
+		delete FROM new_inspiration WHERE id = #{id}
+	</select>
+</mapper>

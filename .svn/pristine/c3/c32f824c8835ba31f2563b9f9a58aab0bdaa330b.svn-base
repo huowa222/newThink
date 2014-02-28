@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<import resource="spring-servlet.xml" />
+
+	<bean id="defaultHandlerMapping"
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+
+	<bean name="/index.ajax"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="index.jsp" />
+	</bean>
+
+	<!--无拦截请求 -->
+	<bean id="noInterceptors"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="adminLogin.ajax">ajaxController</prop>
+				<prop key="checkPhone.ajax">ajaxController</prop>
+				<prop key="dataList.ajax">ajaxController</prop>
+				<prop key="selectList.ajax">ajaxController</prop>
+				<prop key="rssAddress.ajax">ajaxController</prop>
+
+			</props>
+		</property>
+	</bean>
+
+	<!--请求与方法映射控制器 -->
+	<bean id="ajaxController" class="cn.idtag.core.LogicController">
+		<property name="logicClass" ref="ajaxLogic" />
+		<property name="uriMethodMapping">
+			<props>
+				<prop key="adminLogin">initLogin</prop>
+				<prop key="checkPhone">checkPhone</prop>
+				<prop key="dataList">dataList</prop>
+				<prop key="selectList">selectList</prop>
+				<prop key="rssAddress">rssAddress</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

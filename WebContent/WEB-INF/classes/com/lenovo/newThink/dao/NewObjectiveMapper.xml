@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lenovo.newThink.dao.NewObjectiveMapper">
+
+	<resultMap id="new_objectiveResultMap" type="newObjectiveVo">
+		<id property="id" column="id" />
+		<result property="content" />
+		<result property="newIdeaid" />
+		<result property="preObjId" />
+	</resultMap>
+
+	<insert id="insertNewObjective" parameterType="newObjectiveVo">
+		INSERT INTO
+		new_objective
+		(content,newIdeaid,preObjId,status)
+		VALUES
+		(
+		#{content,jdbcType=VARCHAR},#{newIdeaid,jdbcType=NUMERIC},#{preObjId,jdbcType=NUMERIC},#{status,jdbcType=VARCHAR}
+		)
+  	</insert>
+
+	<update id="modifyNewObjective" parameterType="newObjectiveVo">
+		update
+		new_objective set
+		status=#{status,jdbcType=VARCHAR},
+		content=#{content,jdbcType=VARCHAR},
+		newIdeaid=#{newIdeaid,jdbcType=NUMERIC} where id = #{id}	
+	</update>
+
+	<select id="getNewObjective" parameterType="long"
+		resultMap="new_objectiveResultMap">
+		SELECT * FROM new_objective WHERE id = #{id}
+	</select>
+
+	<select id="getNewObjectiveList" parameterType="long"
+		resultMap="new_objectiveResultMap">
+		SELECT * FROM new_objective 
+	</select>
+
+	<select id="getNewObjectiveById" parameterType="long"
+		resultMap="new_objectiveResultMap">
+		SELECT * FROM new_objective WHERE newIdeaid = #{id} and
+		preObjId = 0
+	</select>
+
+	<select id="getSubObjective" parameterType="long"
+		resultMap="new_objectiveResultMap">
+		SELECT * FROM new_objective WHERE preObjId = #{preObjId}
+	</select>
+
+	<select id="deleteNewObjective" parameterType="long">
+		delete FROM
+		new_objective WHERE id = #{id}
+	</select>
+
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+	<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">  
+<configuration>  
+    <typeAliases>  
+        <typeAlias alias="UserInfoVo" type="com.lenovo.newThink.vo.UserInfoVo"/>  
+        <typeAlias alias="UserNewIdeaVo" type="com.lenovo.newThink.vo.UserNewIdeaVo"/>
+        <typeAlias alias="NewObjectiveVo" type="com.lenovo.newThink.vo.NewObjectiveVo"/>
+        <typeAlias alias="NewAnotationVo" type="com.lenovo.newThink.vo.NewAnotationVo"/>
+        <typeAlias alias="NewInspirationVo" type="com.lenovo.newThink.vo.NewInspirationVo"/>
+    </typeAliases>  
+    <mappers>  
+        <mapper resource="com/lenovo/newThink/dao/UserInfoMapper.xml" />  
+        <mapper resource="com/lenovo/newThink/dao/UserThinkingMapper.xml" />
+        <mapper resource="com/lenovo/newThink/dao/NewAnotationMapper.xml" />
+        <mapper resource="com/lenovo/newThink/dao/NewObjectiveMapper.xml" />
+        <mapper resource="com/lenovo/newThink/dao/NewInspirationMapper.xml" />
+    </mappers>    
+</configuration>    
